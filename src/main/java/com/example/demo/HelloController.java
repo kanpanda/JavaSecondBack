@@ -19,9 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 // URLに/userと入力することで、このclass(ここでいうと、HelloControllerクラス)に結び付くよ、というおまじない
 @RequestMapping("/user")
+// Corsの設定をいい感じにする
 @CrossOrigin(origins = "*")
-// =======
-// @CrossOrigin
 public class HelloController {
 
 	// "Get"Mappingであることに注意。これは、「/getというパスに、GETリクエストが飛んでくると、この中身が動くよ」というおまじない。正確に言うと、上で指定したものを加味して「/user/get」である。
