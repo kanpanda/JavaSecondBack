@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
-@RequestMapping("/list") //遷移先を指定
-
-public class ListController{
-    @GetMapping("/test2")    
-    public String list(){
-        return "list"; //メソッドの戻り値homeが指定したhtml(home.html)を呼び出す
+@RequestMapping("/list") // 遷移先を指定
+public class ListController {
+    @GetMapping
+    public String list() {
+        return "list"; // メソッドの戻り値homeが指定したhtml(home.html)を呼び出す
     }
 }
