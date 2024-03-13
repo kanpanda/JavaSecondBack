@@ -26,17 +26,23 @@ public class HelloController {
 	// "Get"Mappingであることに注意。これは、「/getというパスに、GETリクエストが飛んでくると、この中身が動くよ」というおまじない。正確に言うと、上で指定したものを加味して「/user/get」である。
 	@GetMapping("/get")
 	// 返却する値をJSONで返せるようにいい感じにしてくれるおまじない。JSONというものは、形だけ知ってほしい。活用場所は、まだ知らなくていい。
+	// http://localhost:8080/user/get
 	@ResponseBody
 	public String getUser() {
 		String result = "Stringを返します";
-		return result;
+		String result2 = "Stringを返しますyo";
+		String result3 = result + "。そして、" + result2;
+		return result3;
 	}
 
-	// user/test というパスに、GETリクエストを送ると、実行される。ここは、返値が「void」であるため、返値無し。
+	// user/test というパスに、GETリクエストを送ると、実行される。ここは、返値が「void」(public void~)であるため、返値無し。
+	//getリクエストはhttpリクエストの一種。webブラウザからwebサーバに対して出されるお願い（要求）
 	// さらに、メソッドにparamという変数名で、String型を渡すように言われている。たとえのリクエストを張っておくので、これをブラウザに突っ込んでほしい。
-	// http://localhost:8080/user/test?param=くええええええええ
+	// http://localhost:8080/user/test?param=あばば　
+	// http://localhost:8080/user/test?param=あべし　
+
 	@GetMapping("/test")
-	public void testMethod(@RequestParam String param) {
+	public void testMethod(@RequestParam String param) { //RequestParamの変数名と関連付ける引数の変数（ここではparam）が同じ場合は、このように記述を省略できる
 		System.out.println("----------次の行で、引数を出力します。");
 		System.out.println(param);
 	}
@@ -49,7 +55,7 @@ public class HelloController {
 	public List<User> getAllUser() {
 		List<User> allUserList = new ArrayList<>();
 		for (int i = 1; i < 10; i++) {
-			User user = new User();
+			User user = new User();	 //User型のインスタンス「user」を生成
 			user.setAge(10 + i);
 			user.setUserId(i);
 			String _name = "Name" + i;
@@ -69,7 +75,7 @@ public class HelloController {
 		// ここは、データベースに保存されている５０人の全情報を取ってきました、ということになる（実務では）
 		List<User> allUserList = new ArrayList<>();
 		for (int i = 1; i < 50; i++) {
-			User user = new User();
+			User user = new User(); //User型で新しいインスタンスを生成する
 			user.setAge(10 + i);
 			user.setUserId(i);
 			String _name = "Name" + i;
